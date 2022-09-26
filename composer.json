@@ -2,5 +2,8 @@
     "name": "shopware/paas-meta",
     "type": "metapackage",
     "license": "MIT",
-    "description": "A meta package providing recipes for Shopware PaaS"
+    "description": "A meta package providing recipes for Shopware PaaS",
+    "require": {
+        "platformsh/symfonyflex-bridge": "^2.2"   
+    }
 }
