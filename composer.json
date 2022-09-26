@@ -1,0 +1,6 @@
+{
+    "name": "shopware/paas-meta",
+    "type": "metapackage",
+    "license": "MIT",
+    "description": "A meta package providing recipes for Shopware PaaS"
+}
