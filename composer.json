@@ -5,5 +5,8 @@
     "description": "A meta package providing recipes for Shopware PaaS",
     "require": {
         "platformsh/symfonyflex-bridge": "^2.2"   
+    },
+    "autoload": {
+        "files": ["platformsh-env.php"]
     }
 }
