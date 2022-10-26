@@ -26,6 +26,8 @@ function mapPlatformShEnvironment() : void
     }
     // Set the URL based on the route.  This is a required route ID.
     setEnvVar('APP_URL', $config->getRoute('shopware')['url']);
+
+    mapPlatformShOpenSearch('opensearch', $config);
 }
 
 /**
@@ -51,4 +53,15 @@ function setEnvVar(string $name, $value) : void
         }
         $_SERVER[$name] = $value;
     }
+}
+
+function mapPlatformShOpenSearch(string $relationshipName, Config $config): void
+{
+    if (!$config->hasRelationship($relationshipName)) {
+        return;
+    }
+
+    $credentials = $config->credentials($relationshipName);
+
+    setEnvVar('OPENSEARCH_URL', sprintf('http://%s:%s', $credentials['host'], (string) $credentials['port']));
 }
