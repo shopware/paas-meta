@@ -4,9 +4,20 @@
     "license": "MIT",
     "description": "A meta package providing recipes for Shopware PaaS",
     "require": {
-        "platformsh/symfonyflex-bridge": "^2.2"   
+        "platformsh/config-reader": "^2.4.1"
     },
     "autoload": {
         "files": ["platformsh-env.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shopware\\Paas\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.3"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php"
     }
 }

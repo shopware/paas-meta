@@ -1,0 +1,27 @@
+name: PHPUnit
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version:
+          - 7.4
+          - 8.0
+          - 8.1
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run PHPUnit
+        run: composer test
