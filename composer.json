@@ -4,7 +4,8 @@
     "license": "MIT",
     "description": "A meta package providing recipes for Shopware PaaS",
     "require": {
-        "platformsh/config-reader": "^2.4.1"
+        "platformsh/config-reader": "^2.4.1",
+        "symfony/amqp-messenger": "*"
     },
     "autoload": {
         "files": ["platformsh-env.php"]
