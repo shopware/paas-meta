@@ -38,7 +38,7 @@ function mapPlatformShEnvironment() : void
     }
 
     // Set the URL based on the route.  This is a required route ID.
-    setEnvVar('APP_URL', $config->getRoute('shopware')['url']);
+    setEnvVar('APP_URL', $config->getRoute(getenv('PSH_ROUTE_ID') ?: 'shopware')['url']);
 
     mapPlatformShOpenSearch('elasticsearch', $config);
     mapPlatformShOpenSearch('opensearch', $config);
