@@ -49,7 +49,7 @@ function mapPlatformShEnvironment() : void
     // Set the application secret if it's not already set.
     // We force re-setting the APP_SECRET to ensure it's set in all of PHP's various
     // environment places.
-    $secret = getenv('APP_SECRET') ?: $config->projectEntropy;
+    $secret = getenv('APP_SECRET') ?: bin2hex(base64_decode($config->projectEntropy));
     setEnvVar('APP_SECRET', $secret);
 
     // Default to production. You can override this value by setting
