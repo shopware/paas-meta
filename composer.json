@@ -21,5 +21,10 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/runtime": true
+        }
     }
 }

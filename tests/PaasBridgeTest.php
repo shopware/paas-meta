@@ -30,8 +30,8 @@ class PaasBridgeTest extends TestCase
 
         mapPlatformShEnvironment();
 
-        $this->assertEquals('test', $_SERVER['APP_SECRET']);
-        $this->assertEquals('test', getenv('APP_SECRET'));
+        $this->assertEquals('b5eb2d', $_SERVER['APP_SECRET']);
+        $this->assertEquals('b5eb2d', getenv('APP_SECRET'));
     }
 
     public function testDontChangeAppSecret() : void
