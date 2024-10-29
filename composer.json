@@ -6,7 +6,8 @@
     "require": {
         "platformsh/config-reader": "^2.4.1",
         "symfony/amqp-messenger": "*",
-        "shopware/core": "~6.6.0"
+        "shopware/core": "~6.6.0",
+        "shopware/deployment-helper": ">=0.0.11"
     },
     "autoload": {
         "files": ["platformsh-env.php"]
