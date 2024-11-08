@@ -9,8 +9,8 @@ class PaasBridgeShopwareClusterTest extends PaasBridgeShopwareTest
     public function setUp(): void
     {
         parent::setUp();
-        // Switched primary URL from first to second position routes. This is a real-world condition we're facing with PSH.
-        //  Yes, both routes also have the type "shopware" assigned.
+
+        // The non-primary URL goes first, then the actual production-domain, both routes also have the type "shopware" assigned. This is a real-world condition we're facing with PSH.
         \putenv('PLATFORM_ROUTES='.\base64_encode('{"https://test.tst.site/": {"primary": false, "id": "shopware", "production_url": null, "attributes": {}, "type": "upstream", "upstream": "app", "original_url": "https://{default}/"}, "https://prod.site/": {"original_url": "http://{default}/", "id": "shopware", "primary": true, "production_url": null, "attributes": {}, "type": "upstream", "production_url": null}}'));
     }
 
