@@ -60,6 +60,7 @@ function mapPlatformShEnvironment() : void
 
     // Map services as feasible.
     mapPlatformShDatabase('database', $config);
+    mapPlatformShDatabaseReplica('database-replica', $config);
     mapPlatformShMongoDatabase('mongodatabase', $config);
     mapPlatformShElasticSearch('elasticsearch', $config);
     mapPlatformShRabbitMq('rabbitmqqueue', $config);
@@ -243,6 +244,23 @@ function mapPlatformShDatabase(string $relationshipName, Config $config) : void
     }
 
     setEnvVar('DATABASE_URL', $config->formattedCredentials($relationshipName, 'doctrine'));
+}
+
+/**
+ * Maps the specified relationship to the DATABASE_REPLICA_0_URL environment variable, if available.
+ *
+ * @param string $relationshipName
+ *   The database relationship name.
+ * @param Config $config
+ *   The config object.
+ */
+function mapPlatformShDatabaseReplica(string $relationshipName, Config $config) : void
+{
+    if (!$config->hasRelationship($relationshipName)) {
+        return;
+    }
+
+    setEnvVar('DATABASE_REPLICA_0_URL', $config->formattedCredentials($relationshipName, 'doctrine'));
 }
 
 /**
