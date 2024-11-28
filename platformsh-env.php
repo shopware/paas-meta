@@ -37,8 +37,7 @@ function mapPlatformShEnvironment() : void
         return;
     }
 
-    // Set the URL based on the route.  This is a required route ID.
-    setEnvVar('APP_URL', $config->getRoute('shopware')['url']);
+    mapPlatformShAppUrl($config);
 
     mapPlatformShOpenSearch('elasticsearch', $config);
     mapPlatformShOpenSearch('opensearch', $config);
@@ -102,6 +101,19 @@ function setEnvVar(string $name, $value) : void
         }
         $_SERVER[$name] = $value;
     }
+}
+
+function mapPlatformShAppUrl(Config $config): void
+{
+    $routeId = getenv('PSH_ROUTE_ID') ?: 'shopware';
+    $route   = $config->getPrimaryRoute();
+
+    if ( ! $route) {
+        $route = $config->getRoute($routeId);
+    }
+
+    // Set the URL based on the route.  This is a required route ID.
+    setEnvVar('APP_URL', $route['url']);
 }
 
 function mapPlatformShOpenSearch(string $relationshipName, Config $config): void
