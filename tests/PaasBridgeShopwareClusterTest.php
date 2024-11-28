@@ -18,6 +18,6 @@ class PaasBridgeShopwareClusterTest extends PaasBridgeShopwareTest
     {
         mapPlatformShEnvironment();
 
-        $this->assertEquals('https://prod.site/', getenv('APP_URL'));
+        $this->assertEquals('https://prod.site', getenv('APP_URL'));
     }
 }
