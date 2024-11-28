@@ -16,6 +16,6 @@ class PaasBridgeShopwareClusterTest extends PaasBridgeShopwareTest
     public function testAppUrlSet(): void
     {
         mapPlatformShEnvironment();
-        $this->assertEquals('https://prod.site/', getenv('APP_URL'));
+        $this->assertEquals('https://prod.site', getenv('APP_URL'));
     }
 }

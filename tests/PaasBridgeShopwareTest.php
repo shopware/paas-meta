@@ -20,6 +20,6 @@ class PaasBridgeShopwareTest extends TestCase
     {
         mapPlatformShEnvironment();
 
-        $this->assertEquals('https://test.tst.site/', getenv('APP_URL'));
+        $this->assertEquals('https://test.tst.site', getenv('APP_URL'));
     }
 }

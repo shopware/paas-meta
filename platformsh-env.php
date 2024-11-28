@@ -113,7 +113,8 @@ function mapPlatformShAppUrl(Config $config): void
     }
 
     // Set the URL based on the route.  This is a required route ID.
-    setEnvVar('APP_URL', $route['url']);
+    $appUrl = rtrim($route['url'], '/');
+    setEnvVar('APP_URL', $appUrl);
 }
 
 function mapPlatformShOpenSearch(string $relationshipName, Config $config): void
