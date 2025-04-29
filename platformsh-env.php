@@ -105,6 +105,11 @@ function setEnvVar(string $name, $value) : void
 
 function mapPlatformShAppUrl(Config $config): void
 {
+    if (!empty(getenv('APP_URL')) {
+        // don't override manual configured APP_URL
+        return;
+    }
+
     $routeId = getenv('PSH_ROUTE_ID') ?: 'shopware';
     $route   = $config->getPrimaryRoute();
 
