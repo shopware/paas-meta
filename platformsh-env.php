@@ -105,8 +105,8 @@ function setEnvVar(string $name, $value) : void
 
 function mapPlatformShAppUrl(Config $config): void
 {
-    if (!empty(getenv('APP_URL')) {
-        // don't override manual configured APP_URL
+    if (!empty(getenv('APP_URL'))) {
+        // don't override manually configured APP_URL
         return;
     }
 
