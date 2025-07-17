@@ -5,7 +5,7 @@ This meta-package for the Shopware ecosystem focuses on supporting Shopware's [P
 
 ### Purpose and Role
 
-As a meta package, **paas-meta** serves as a collection of dependencies and recipe definitions required for running Shopware on different PaaS environments. It centralizes configuration and platform-specific adjustments needed for smooth deployment and operations, and orchestrates the setup and environment expectations for Shopware running as a service on managed infrastructure. It does not contain application logic itself.
+As a meta package, **paas-meta** serves as a collection of dependencies and recipe definitions required for running Shopware on P.SH  PaaS environments. It centralizes configuration and platform-specific adjustments needed for smooth deployment and operations, and orchestrates the setup and environment expectations for Shopware running as a service on managed infrastructure. It does not contain application logic itself.
 
 ### Key Features
 
