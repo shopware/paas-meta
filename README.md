@@ -21,7 +21,7 @@ As a meta package, **paas-meta** serves as a collection of dependencies and reci
 
 ### Who Should Use It
 
-- Developers or merchants who want to deploy Shopware on a cloud platform (as a service) and need a standardized, officially-supported setup.
+- Developers or merchants who want to deploy Shopware on a P.SH platform and need a standardized, officially-supported setup.
 - Teams aiming to avoid manual, error-prone configuration.
 
 For full documentation and integration instructions, refer to [Shopware PaaS Documentation](https://github.com/shopware/paas-meta).
