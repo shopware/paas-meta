@@ -131,6 +131,7 @@ function mapPlatformShOpenSearch(string $relationshipName, Config $config): void
     $credentials = $config->credentials($relationshipName);
 
     setEnvVar('OPENSEARCH_URL', sprintf('http://%s:%s', $credentials['host'], (string) $credentials['port']));
+    setEnvVar('ADMIN_OPENSEARCH_URL', sprintf('http://%s:%s', $credentials['host'], (string) $credentials['port']));
 }
 
 
