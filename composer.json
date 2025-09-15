@@ -4,7 +4,7 @@
     "license": "MIT",
     "description": "A meta package providing recipes for Shopware PaaS",
     "require": {
-        "platformsh/config-reader": "^2.4.1",
+        "platformsh/config-reader": "^2.4.1 || ^3",
         "symfony/amqp-messenger": "*",
         "shopware/core": "~6.7.0",
         "shopware/deployment-helper": ">=0.0.11"
