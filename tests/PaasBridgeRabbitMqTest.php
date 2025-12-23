@@ -72,6 +72,6 @@ class PaasBridgeRabbitMqTest extends TestCase
         mapPlatformShEnvironment();
 
         $this->assertEquals('amqp://guest:guest@rabbitmq.internal:5672/%2f/messages', $_SERVER['MESSENGER_TRANSPORT_DSN']);
-        $this->assertEquals('amqp://guest:guest@rabbitmq.internal:5672/%2f', $_SERVER['MESSENGER_TRANSPORT_DSN_PREFIX']);
+        $this->assertEquals('amqp://guest:guest@rabbitmq.internal:5672/%2f/', $_SERVER['MESSENGER_TRANSPORT_DSN_PREFIX']);
     }
 }
