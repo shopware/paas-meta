@@ -167,7 +167,7 @@ function mapPlatformShMailer(Config $config)
  */
 function rabbitMqFormatter(array $credentials): string
 {
-    return sprintf('%s/messages',
+    return sprintf('%smessages',
         rabbitMqFormatterPrefix($credentials)
     );
 }
@@ -184,7 +184,7 @@ function rabbitMqFormatter(array $credentials): string
  */
 function rabbitMqFormatterPrefix(array $credentials): string
 {
-    return sprintf('%s://%s:%s@%s:%d/%s',
+    return sprintf('%s://%s:%s@%s:%d/%s/',
         $credentials['scheme'],
         $credentials['username'],
         $credentials['password'],
