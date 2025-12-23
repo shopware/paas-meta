@@ -44,6 +44,7 @@ function mapPlatformShEnvironment() : void
 
     $config->registerFormatter('doctrine', __NAMESPACE__ . '\doctrineFormatter');
     $config->registerFormatter('rabbitmq', __NAMESPACE__ . '\rabbitMqFormatter');
+    $config->registerFormatter('rabbitmqPrefix', __NAMESPACE__ . '\rabbitMqFormatterPrefix');
 
     // Set the application secret if it's not already set.
     // We force re-setting the APP_SECRET to ensure it's set in all of PHP's various
@@ -162,13 +163,28 @@ function mapPlatformShMailer(Config $config)
 /**
  * Formatter for the Symfony RabbitMQ Messenger format.
  *
- * The %2f default vhost is not a formatting code, but a URL-encoded
- * forward slash (/), which is the default vhost name in RabbitMQ.
- * It's a weird default name, but it's what RabbitMQ uses.
+ * Returns a full URL including the trailing exchange name "/messages"
  */
 function rabbitMqFormatter(array $credentials): string
 {
-    return sprintf('%s://%s:%s@%s:%d/%s/messages',
+    return sprintf('%s/messages',
+        rabbitMqFormatterPrefix($credentials)
+    );
+}
+
+/**
+ * Formatter for the Symfony RabbitMQ Messenger format.
+ *
+ * The %2f default vhost is not a formatting code, but a URL-encoded
+ * forward slash (/), which is the default vhost name in RabbitMQ.
+ * It's a weird default name, but it's what RabbitMQ uses.
+ *
+ * Formats the URL without the trailing exchange name. The value can
+ * be used as a prefix for different transports.
+ */
+function rabbitMqFormatterPrefix(array $credentials): string
+{
+    return sprintf('%s://%s:%s@%s:%d/%s',
         $credentials['scheme'],
         $credentials['username'],
         $credentials['password'],
@@ -297,6 +313,7 @@ function mapPlatformShRabbitMq(string $relationshipName, Config $config) : void
     }
 
     setEnvVar('MESSENGER_TRANSPORT_DSN', $config->formattedCredentials($relationshipName, 'rabbitmq'));
+    setEnvVar('MESSENGER_TRANSPORT_DSN_PREFIX', $config->formattedCredentials($relationshipName, 'rabbitmqPrefix'));
 }
 
 /**
