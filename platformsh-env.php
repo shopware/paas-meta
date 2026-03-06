@@ -67,6 +67,7 @@ function mapPlatformShEnvironment() : void
     mapPlatformShSolr('solr', $config);
     mapPlatformShRedisSession('redissession', $config);
     mapPlatformShRedisCache('rediscache', $config);
+    mapPlatformShRedisCritical('rediscritical', $config);
 
     // Set the Swiftmailer configuration if it's not set already.
     if (!getenv('MAILER_URL')) {
@@ -440,4 +441,21 @@ function mapPlatformShRedisCache(string $relationshipName, Config $config): void
 
     setEnvVar('CACHE_DSN', sprintf('%s:%d', $credentials['host'], $credentials['port']));
     setEnvVar('CACHE_URL', sprintf('redis://%s:%s', $credentials['host'], (string) $credentials['port']));
+}
+
+/**
+ * Maps the specified relationship to environment variables for Redis critical (cart, increment...)
+ *
+ * @param string $relationshipName
+ * @param Config $config
+ */
+function mapPlatformShRedisCritical(string $relationshipName, Config $config): void
+{
+    if (!$config->hasRelationship($relationshipName, $config)) {
+        return;
+    }
+
+    $credentials = $config->credentials($relationshipName);
+
+    setEnvVar('CRITICAL_REDIS_URL', sprintf('redis://%s:%s', $credentials['host'], (string) $credentials['port']));
 }
